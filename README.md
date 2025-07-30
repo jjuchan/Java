@@ -90,63 +90,83 @@
     3.  결과: `for (Student student : students) { ... }`
 
 
-## 기본형 vs 참조형 (ref 패키지 참고)
-사용하는 값을 변수에 직접 넣을 수 있는 기본형, 객체가 저장된 메모리 위치를 가르키는 참조값을 넣을 수 있는 참조형
+## 📌 기본형 vs 참조형 (Java 기준)
 
-기본형:int,long,double,boolean ex)10,20
-참조형:Student, int[] 와 같은 배열에 주소값을 저장한다.
+---
 
-계산
-기본형은 들어있는 값 그대로 사용이 가능
-참조형은 참조값을 가지고 주소로 가야지 사용이 가능
-즉 .을 사용해 직접 값에 접근해서 불러와야 한다는 뜻이다.
-기본형을 제외한 나머지는 모두 참조형이고 기본형은 소문자로 시작한다. 자바가 기본으로 제공하는 데이터 타입이기 때문에 기본형
+### ✅ 1. 기본 개념
 
-참조형은 대문자로 시작하곤 한다 ex String와 같은 클래스들
+| 구분       | 기본형 (Primitive Type)       | 참조형 (Reference Type)          |
+|------------|-------------------------------|----------------------------------|
+| 저장 내용   | 실제 값                       | 객체의 주소값                    |
+| 예시       | int, long, double, boolean 등 | String, int[], 사용자 정의 클래스 등 |
+| 메모리 구조 | 스택(Stack)에 값 저장         | 스택에 참조값, 힙(Heap)에 실제 객체 저장 |
+| 사용 방식   | 변수에 직접 값을 저장         | 변수에 객체의 메모리 주소를 저장 |
+| 접근 방식   | 변수 자체로 값 사용           | 주소를 통해 접근 (ex: data.value) |
+| 명명 규칙   | 소문자로 시작                 | 보통 대문자로 시작 (클래스명이므로) |
 
-기본형 vs 참조형 변수대입
+---
 
-기본형은 변수에 들어가 있는 값을 복사하기 때문에 각각 따로 값이 생기는 것이고, 참조형은 주소값을 복사해주기 때문에 실제값을 불러와야한다.
-int a = 10, int b = a라고 하면 b를 a에 넣는게 아니라 10을 복사해서 b에 넣어주는거임 기본형은
+### ✅ 2. 변수 대입 차이
 
-참조형은 dataA.value = 10; 하고  Data dataB = dataA; 선언해두고 만약 value를 바꾸면 같이 바뀐다. 주소값에 해당하는 값이 바뀐거라
-주소값이 같아서 값도 같이 바뀌는 것이다
-
-
-기본형 vs 참조형 메서드 호출
-메서드 호출도 동일하게 매개변수에 값을 복사해서 전달한다.
+```java
+// 기본형 예시
 int a = 10;
+int b = a;  // 값 자체가 복사됨 (a와 b는 독립적)
 
-System.out.println("메서드 호출 전 a:" + a);
+// 참조형 예시
+Data dataA = new Data();
+dataA.value = 10;
+Data dataB = dataA;  // 주소값이 복사됨 (같은 객체를 참조)
+dataB.value = 20;
+// dataA.value도 20이 됨
+```
 
+---
 
-        changePrimitive(a);
-        System.out.println("메서드 호출 후 a:" + a);
-    }
+## ✅ 3. 메서드 호출 시 동작
 
-    static void changePrimitive(int x) {
-        x = 20;
-    }
-이렇게 해도 a 값은 변하지 않음 int x = a가 된 개념
+### 📌 기본형은 값 복사 (Call by Value)
 
-     Data dataA = new Data();
-        dataA.value = 10;
-        System.out.println("dataA = " + dataA.value);
+```java
+void changePrimitive(int x) {
+    x = 20;
+}
 
-        changeReference(dataA);
+int a = 10;
+changePrimitive(a);
+// a는 여전히 10
+```
 
-        System.out.println("dataA = " + dataA.value);
+### 📌 참조형은 주소값 복사 (Call by Reference처럼 동작)
 
-    }
+```java
+void changeReference(Data dataX) {
+    dataX.value = 20;
+}
 
-    static void changeReference(Data datax) {
-        datax.value = 20;
-    }
+Data dataA = new Data();
+dataA.value = 10;
+changeReference(dataA);
+// dataA.value는 20으로 변경됨
+```
 
-참조형은 그 주소값을 복사하기 때문에 같은 주소지를 가진 값을 변경 했으니 dataA도 변경
+---
 
-Null
-주소값이 정해지지 않았을 때 null 설정을 해서 아직 존재하지 않다는 걸 표시한다. 참조형에서만 가능하다
+## ✅ 4. null과 NullPointerException
+
+- 참조형 변수는 **아직 객체를 참조하지 않을 경우 null**로 초기화할 수 있음
+- null은 아무런 주소도 가리키지 않는다는 뜻
+- null 상태에서 객체에 접근하면 `NullPointerException` 발생
+
+```java
+Data data = null;
+data.value = 10;  // 예외 발생! (주소가 없기 때문)
+```
+
+- 사용되지 않는 참조형 객체는 **JVM의 가비지 컬렉터(GC)** 가 자동으로 메모리에서 제거
+
+---
 
 
 
