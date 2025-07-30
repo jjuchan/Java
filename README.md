@@ -115,3 +115,38 @@ int a = 10, int b = a라고 하면 b를 a에 넣는게 아니라 10을 복사해
 
 기본형 vs 참조형 메서드 호출
 메서드 호출도 동일하게 매개변수에 값을 복사해서 전달한다.
+int a = 10;
+
+System.out.println("메서드 호출 전 a:" + a);
+
+
+        changePrimitive(a);
+        System.out.println("메서드 호출 후 a:" + a);
+    }
+
+    static void changePrimitive(int x) {
+        x = 20;
+    }
+이렇게 해도 a 값은 변하지 않음 int x = a가 된 개념
+
+     Data dataA = new Data();
+        dataA.value = 10;
+        System.out.println("dataA = " + dataA.value);
+
+        changeReference(dataA);
+
+        System.out.println("dataA = " + dataA.value);
+
+    }
+
+    static void changeReference(Data datax) {
+        datax.value = 20;
+    }
+
+참조형은 그 주소값을 복사하기 때문에 같은 주소지를 가진 값을 변경 했으니 dataA도 변경
+
+Null
+주소값이 정해지지 않았을 때 null 설정을 해서 아직 존재하지 않다는 걸 표시한다. 참조형에서만 가능하다
+
+
+
