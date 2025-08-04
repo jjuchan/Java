@@ -349,3 +349,6 @@ public class Student {
 | 목적          | 객체 초기화                          | 특정 작업 수행                      |
 | 사용 예시       | `new Student("John", 90)`          | `student.displayInfo()`          |             
                                 
+---
+## 💡패키지
+* **패키지(Package)** 는 자바 클래스들을 그룹화하여 관리하는 방법입니다.
