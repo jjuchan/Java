@@ -397,7 +397,113 @@ public class MyClass {
 > 서로 관련된 클래스는 하나의 패키지에 모으고 관련이 적은 클래스는 다른 패키지로 분리하는 것이 좋다.
 
 ---
-## 접근제어자
+## 접근제어자(access 패키지 참고)
 접근제어자는 클래스, 변수, 메소드 등의 접근 범위를 제어하는 키워드입니다.
+클래스를 외부로 노출시키지 않거나, 특정 클래스에서만 접근할 수 있도록 제한할 수 있습니다.
+
+### ✅ 접근제어자 종류
+| 접근제어자 | 설명                                       | 사용 예시                      |
+|------------|------------------------------------------|-------------------------------|
+| public     | 모든 클래스에서 접근 가능                        | `public class MyClass { ... }
+| protected  | 같은 패키지 내 또는 상속받은 클래스에서 접근 가능          | `protected void myMethod() { ... }` |
+| private    | 같은 클래스 내에서만 접근 가능                      | `private int myVariable;
+| default    | 같은 패키지 내에서만 접근 가능 (접근제어자 생략 시 기본값) | `class MyClass { ... }`       |
+
+### ✅ 접근제어자 사용 예시
+```java
+package com.example.accesscontrol;  
+
+public class MyClass {
+    public int publicVar;          // 모든 클래스에서 접근 가능
+    protected int protectedVar;    // 같은 패키지 또는 상속받은 클래스에서 접근 가능
+    private int privateVar;        // 같은 클래스 내에서만 접근 가능
+    int defaultVar;                // 같은 패키지 내에서만 접근 가능 (default)
+
+    public void publicMethod() {
+        System.out.println("Public Method");
+    }
+
+    protected void protectedMethod() {
+        System.out.println("Protected Method");
+    }
+
+    private void privateMethod() {
+        System.out.println("Private Method");
+    }
+
+    void defaultMethod() {
+        System.out.println("Default Method");
+    }
+}
+
+```
+---
+### ✅ 접근제어자 사용 - 클래스 레벨
+ - 클래스 레벌의 접근 제어자는 public과 default(생략)만 사용 가능합니다.
+ - protected와 private는 클래스 레벨에서 사용할 수 없습니다.
+ - pulic 클래스는 파일명과 같아야 합니다.
+ - public 클래스는 하나만 존재할 수 있습니다.
+ - default 클래스는 파일명과 관계없이 같은 패키지 내에서만 사용됩니다.
+---
+### ✅ 클래스 레벨 예시
+```java
+package com.example.accesscontrol;
+public class PublicClass { // public
+    // public 클래스는 파일명과 같아야 합니다.
+}
+package com.example.accesscontrol;
+class DefaultClass { // default
+    // default 클래스는 파일명과 관계없이 같은 패키지 내에서만 사용됩니다
+}
+```
+---
+### 😊 캡슐화
+캡슐화는 객체 지향 프로그래밍의 핵심 개념 중 하나로, 데이터와 메소드를 하나의 단위로 묶고, 외부에서 직접 접근하지 못하도록 제한하는 것입니다.
+> **데이터 보호**: 클래스 내부의 속성(데이터)를 외부에서 직접 수정하지 못하도록 보호하고 필요한 기능만 접근하게 합니다.
+---
+### 😁 캡슐화 예시
+```java
+package com.example.encapsulation;
+public class Person {
+    private String name; // private 변수로 외부에서 직접 접근 불가
+    private int age;     // private 변수로 외부에서 직접 접근 불가
+
+    // 생성자
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter 메소드
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // Setter 메소드
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        if (age >= 0) { // 유효성 검사
+            this.age = age;
+        }
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
 
 

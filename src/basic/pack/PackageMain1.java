@@ -1,0 +1,14 @@
+package basic.pack;
+
+import basic.pack.a.*;
+
+
+
+public class PackageMain1 {
+    public static void main(String[] args) {
+        Data data = new Data();
+        User user = new User();
+        User2 user2 = new User2();
+
+    }
+}
