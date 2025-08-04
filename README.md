@@ -359,11 +359,42 @@ public class Student {
 | 목적          | 객체 초기화                          | 특정 작업 수행                      |
 | 사용 예시       | `new Student("John", 90)`          | `student.displayInfo()`          |             
 
-                                
 ---
 ## 💡패키지
 * **패키지(Package)** 는 자바 클래스들을 그룹화하여 관리하는 방법입니다.
+- 같은 패키지에 속한 클래스는 public이 아니어도 서로 접근할 수 있습니다.
+- 다른 패키지의 클래스는 import를 통해 접근해야 합니다.
+- import \*를 사용하면 해당 패키지의 모든 클래스를 한 번에 가져올 수 있습니다.
+- 만약 클래스 이름이 같아도 패키지 이름이 다르면 충돌하지 않습니다.
+---
+### 📦 패키지 사용 예시
 
+```java
+package com.example.myapp; // 패키지 선언
+import java.util.ArrayList; // 외부 패키지 클래스 가져오기
+import java.util.*; // 모든 클래스를 가져오기
+
+public class MyClass {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>(); // ArrayList 사용
+        list.add("Hello");
+        System.out.println(list);
+    }
+}
+```
+---
+### 📌 패키지 규칙
+1.패키지의 이름과 위치는 디렉토리 구조와 일치해야 합니다.
+
+2.패키지 이름은 소문자로 작성하는 것이 일반적입니다.
+
+3.패키지 이름의 앞 부분에는 일반적으로 회사의 도메인을 거꾸로 사용한다.
+
+4.패키지가 계층 구조를 가진다고 해도 모든 패키지는 서로 다른 패키지입니다.
 
 ---
+### 📌 패키지 활용
+서로 관련된 클래스는 하나의 패키지에 모으고 관련이 적은 클래스는 다른 패키지로 분리하는 것이 좋다.
+
+
 
