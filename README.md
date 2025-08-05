@@ -350,27 +350,34 @@ public class Student {
       ---
 
 ### ✅ 생성자와 메소드의 차이점
-| 항목          | 생성자 (Constructor)                | 메소드 (Method)                   |
-|-------------|----------------------------------|---------------------------------|
-| 이름          | 클래스 이름과 동일                  | 임의의 이름 가능                     |
-| 반환 타입      | 없음 (void 사용하지 않음)            | 반환 타입 지정 가능
-| 매개변수       | 매개변수 가질 수 있음                  | 매개변수 가질 수 있음                  |      
-| 호출 시점      | 객체 생성 시 자동 호출                | 명시적으로 호출해야 함                |     
-| 목적          | 객체 초기화                          | 특정 작업 수행                      |
-| 사용 예시       | `new Student("John", 90)`          | `student.displayInfo()`          |             
+
+| 항목    | 생성자 (Constructor)         | 메소드 (Method)            |
+|-------|---------------------------|-------------------------|
+| 이름    | 클래스 이름과 동일                | 임의의 이름 가능               |
+| 반환 타입 | 없음 (void 사용하지 않음)         | 반환 타입 지정 가능             
+| 매개변수  | 매개변수 가질 수 있음              | 매개변수 가질 수 있음            |      
+| 호출 시점 | 객체 생성 시 자동 호출             | 명시적으로 호출해야 함            |     
+| 목적    | 객체 초기화                    | 특정 작업 수행                |
+| 사용 예시 | `new Student("John", 90)` | `student.displayInfo()` |             
 
 ---
+
 ## 💡패키지(Package) -> package 패키지 참고
+
 * **패키지(Package)** 는 자바 클래스들을 그룹화하여 관리하는 방법입니다.
+
 - 같은 패키지에 속한 클래스는 public이 아니어도 서로 접근할 수 있습니다.
 - 다른 패키지의 클래스는 import를 통해 접근해야 합니다.
 - import \*를 사용하면 해당 패키지의 모든 클래스를 한 번에 가져올 수 있습니다.
 - 만약 클래스 이름이 같아도 패키지 이름이 다르면 충돌하지 않습니다.
+
 ---
+
 ### 📦 패키지 사용 예시
 
 ```java
 package com.example.myapp; // 패키지 선언
+
 import java.util.ArrayList; // 외부 패키지 클래스 가져오기
 import java.util.*; // 모든 클래스를 가져오기
 
@@ -382,8 +389,11 @@ public class MyClass {
     }
 }
 ```
+
 ---
+
 ### 📌 패키지 규칙
+
 1.패키지의 이름과 위치는 디렉토리 구조와 일치해야 합니다.
 
 2.패키지 이름은 소문자로 작성하는 것이 일반적입니다.
@@ -393,25 +403,31 @@ public class MyClass {
 4.패키지가 계층 구조를 가진다고 해도 모든 패키지는 서로 다른 패키지입니다.
 
 ---
+
 ### 📌 패키지 활용
+
 > 서로 관련된 클래스는 하나의 패키지에 모으고 관련이 적은 클래스는 다른 패키지로 분리하는 것이 좋다.
 
 ---
+
 ## 접근제어자(access 패키지 참고)
+
 접근제어자는 클래스, 변수, 메소드 등의 접근 범위를 제어하는 키워드입니다.
 클래스를 외부로 노출시키지 않거나, 특정 클래스에서만 접근할 수 있도록 제한할 수 있습니다.
 
 ### ✅ 접근제어자 종류
-| 접근제어자 | 설명                                       | 사용 예시                      |
-|------------|------------------------------------------|-------------------------------|
-| public     | 모든 클래스에서 접근 가능                        | `public class MyClass { ... }
-| protected  | 같은 패키지 내 또는 상속받은 클래스에서 접근 가능          | `protected void myMethod() { ... }` |
-| private    | 같은 클래스 내에서만 접근 가능                      | `private int myVariable;
-| default    | 같은 패키지 내에서만 접근 가능 (접근제어자 생략 시 기본값) | `class MyClass { ... }`       |
+
+| 접근제어자     | 설명                                 | 사용 예시                               |
+|-----------|------------------------------------|-------------------------------------|
+| public    | 모든 클래스에서 접근 가능                     | `public class MyClass { ... }       
+| protected | 같은 패키지 내 또는 상속받은 클래스에서 접근 가능       | `protected void myMethod() { ... }` |
+| private   | 같은 클래스 내에서만 접근 가능                  | `private int myVariable;            
+| default   | 같은 패키지 내에서만 접근 가능 (접근제어자 생략 시 기본값) | `class MyClass { ... }`             |
 
 ### ✅ 접근제어자 사용 예시
+
 ```java
-package com.example.accesscontrol;  
+package com.example.accesscontrol;
 
 public class MyClass {
     public int publicVar;          // 모든 클래스에서 접근 가능
@@ -437,33 +453,47 @@ public class MyClass {
 }
 
 ```
+
 ---
+
 ### ✅ 접근제어자 사용 - 클래스 레벨
- - 클래스 레벌의 접근 제어자는 public과 default(생략)만 사용 가능합니다.
- - protected와 private는 클래스 레벨에서 사용할 수 없습니다.
- - pulic 클래스는 파일명과 같아야 합니다.
- - public 클래스는 하나만 존재할 수 있습니다.
- - default 클래스는 파일명과 관계없이 같은 패키지 내에서만 사용됩니다.
+
+- 클래스 레벌의 접근 제어자는 public과 default(생략)만 사용 가능합니다.
+- protected와 private는 클래스 레벨에서 사용할 수 없습니다.
+- pulic 클래스는 파일명과 같아야 합니다.
+- public 클래스는 하나만 존재할 수 있습니다.
+- default 클래스는 파일명과 관계없이 같은 패키지 내에서만 사용됩니다.
+
 ---
+
 ### ✅ 클래스 레벨 예시
+
 ```java
 package com.example.accesscontrol;
+
 public class PublicClass { // public
     // public 클래스는 파일명과 같아야 합니다.
 }
 package com.example.accesscontrol;
+
 class DefaultClass { // default
     // default 클래스는 파일명과 관계없이 같은 패키지 내에서만 사용됩니다
 }
 ```
+
 ---
+
 ### 😊 캡슐화
+
 캡슐화는 객체 지향 프로그래밍의 핵심 개념 중 하나로, 데이터와 메소드를 하나의 단위로 묶고, 외부에서 직접 접근하지 못하도록 제한하는 것입니다.
 > **데이터 보호**: 클래스 내부의 속성(데이터)를 외부에서 직접 수정하지 못하도록 보호하고 필요한 기능만 접근하게 합니다.
 ---
+
 ### 😁 캡슐화 예시
+
 ```java
 package com.example.encapsulation;
+
 public class Person {
     private String name; // private 변수로 외부에서 직접 접근 불가
     private int age;     // private 변수로 외부에서 직접 접근 불가
@@ -496,10 +526,136 @@ public class Person {
 }
 ```
 
-## 자바 메모리 구조
-- 메서드영역 (Method Area): 클래스 정보, 상수, 정적 변수 등을 저장합니다.
-- 힙 영역 (Heap Area): 객체 인스턴스와 배열을 저장합니다.
-- 스택 영역 (Stack Area): 실제 프로그램이 실행되는 영역입니다.
+## 💡자바 메모리 구조(static 패키지 참고)
+
+예시
+
+- 메서드영역 (Method Area): 클래스 정보, 상수, 정적 변수 등을 저장합니다.(ex 붕어빵 틀)
+- 힙 영역 (Heap Area): 객체 인스턴스와 배열을 저장합니다.(ex 붕어빵)
+- 스택 영역 (Stack Area): 실제 프로그램이 실행되는 영역입니다.(ex 붕어빵을 만드는 과정)
+
+실제
+
+- **메서드 영역 (Method Area)**: 클래스 정보, 상수, 정적 변수 등을 저장합니다. 클래스가 로드될 때 메모리에 올라갑니다.
+    - static 변수와 메소드, 클래스 정보 등이 저장됩니다.
+    - 런타임 상수 풀 (Runtime Constant Pool)도 이 영역에 포함되어, 문자열 리터럴과 같은 상수 값이 저장됩니다.
+
+- **힙 영역 (Heap Area)**: 객체 인스턴스와 배열을 저장합니다.
+    - 객체가 생성될 때 메모리에 할당됩니다.
+    - 모든 객체와 배열은 힙 영역에 저장되며, 가비지 컬렉터(Garbage Collector)가 이 영역을 관리합니다.
+
+- **스택 영역 (Stack Area)**: 메서드 호출 시 생성되는 프레임(스택 프레임)을 저장합니다.
+    - 각 스레드마다 별도의 스택 영역이 있으며, 메서드 호출 시 지역 변수, 매개변수, 리턴 주소 등을 저장합니다.
+    - 메서드가 호출될 때마다 새로운 스택 프레임이 생성되고, 메서드 실행이 끝나면 해당 프레임이 제거됩니다.
+
+### ✅ 스택과 큐 자료 구조
+
+- **스택 (Stack)**: 후입선출(LIFO, Last In First Out) 구조로, 가장 나중에 들어온 데이터가 가장 먼저 나갑니다.
+    - 예시: 웹 브라우저의 뒤로 가기 기능, 함수 호출 스택 등
+    - 자바에서는 `java.util.Stack` 클래스를 사용하여 스택을 구현할 수 있습니다.
+    - 스택은 `push()` 메소드로 데이터를 추가하고, `pop()` 메소드로 데이터를 제거합니다.
+- **큐 (Queue)**: 선입선출(FIFO, First In First Out) 구조로, 가장 먼저 들어온 데이터가 가장 먼저 나갑니다.
+    - 예시: 프린터 대기열, 프로세스 스케줄링 등
+    - 자바에서는 `java.util.Queue` 인터페이스와 `java.util.LinkedList` 클래스를 사용하여 큐를 구현할 수 있습니다.
+        - 큐는 `offer()` 메소드로 데이터를 추가하고, `poll()` 메소드로 데이터를 제거합니다.
+        - `peek()` 메소드를 사용하면 큐의 첫 번째 요소를 확인할 수 있지만 제거하지는 않습니다.
+
+### ✅ 스택영역
+
+코드 예시
+
+```java
+public class JavaMemoryMain1 {
+    public static void main(String[] args) {
+        System.out.println("main start");
+        method1(10);
+        System.out.println("main end");
+    }
+
+    static void method1(int m1) {
+        System.out.println("method1 start");
+        int cal = m1 * 2;
+        method2(cal);
+        System.out.println("method1 end");
+    }
+
+
+    static void method2(int m2) {
+        System.out.println("method2 start");
+        System.out.println("method2 start");
+
+    }
+}
+```
+
+### ✅ 실행 결과
+
+```
+main start
+method1 start
+method2 start
+method2 start
+method1 end
+main end
+```
+
+---
+
+### ✅ static 키워드(static 패키지 참고)
+
+- **static** 키워드는 클래스 레벨에서 공유되는 변수나 메소드를 정의할 때 사용됩니다.
+- static 변수는 클래스가 메모리에 로드될 때 생성되며, 모든 인스턴스가 동일한 값을 공유합니다.
+- static 메소드는 인스턴스 없이 .을 사용해서 클래스 이름으로 호출할 수 있으며, 인스턴스 변수에 접근할 수 없습니다.
+- static이 붙으면 정적 변수나 메소드가 되며, 클래스가 로드될 때 메모리에 할당됩니다.
+- static 메소드는 인스턴스 없이 클래스 이름으로 호출할 수 있습니다.
+
+---
+
+### ✅ static 변수와 메소드 주의 사항
+
+- static 변수는 static 메소드에서만 접근할 수 있습니다.
+- static 메소드는 인스턴스 변수에 접근할 수 없습니다.
+- static 메소드는 static 변수와 메소드만 사용할 수 있습니다.
+- 인스턴스 메소드는 static 변수와 메소드에 접근할 수 있지만, static 메소드에서는 인스턴스 변수와 메소드를 사용할 수 없습니다.
+
+### ✅ static 변수와 메소드 예시
+
+```java
+public class DecoData {
+    private int instanceValue;
+    private static int staticValue;
+
+    public static void staticCall() {
+
+        staticValue++; // 정적 변수 접근
+        staticmethod(); // 정적 메서드 호출
+
+    }
+
+    private void instanceCall() {
+
+        instanceValue++; // 인스턴스 변수 접근
+        staticValue++; // 정적 변수 접근
+
+    }
+
+    private static void staticmethod() {
+        // 정적 메서드에서는 인스턴스 변수에 접근할 수 없음
+        // instanceValue++; // 컴파일 오류
+        staticValue++; // 정적 변수 접근
+    }
+
+```
+
+---
+
+### ✅ 정리
+
+> 클래스메서드 -> static 메소드로 정의되어 클래스 이름으로 호출 가능
+>
+>인스턴스메소드 -> 인스턴스 생성 후 객체를 통해 호출 가능
+
+---
 
 
 
