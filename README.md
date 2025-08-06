@@ -749,6 +749,112 @@ public class Constants {
 | 상수 사용 | 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없음 | `System.out.println("Max Users: " + MAX_USERS);` |
 ---
 
+## 💡 상속(Inheritance) -> extends1 패키지 참고
+- 상속은 객체 지향 프로그래밍의 핵심 개념 중 하나로, 기존 클래스의 속성과 메소드를 새로운 클래스에서 재사용할 수 있게 해줍니다.
+- 상속을 통해 코드의 재사용성을 높이고, 클래스 간의 관계를 명확히 할 수 있습니다.
+- 부모 클래스는 자식클래스에 접근 할 수 없지만 자식 클래스는 부모 클래스에 접근할 수 있습니다.
+- 자식 클래스는 부모 클래스의 멤버 변수와 메소드를 상속받아 사용할 수 있으며, 필요에 따라 오버라이드(재정의)할 수 있습니다.
+- 상속은 하나만 받을 수 있습니다. (단일 상속) 하지만 인터페이스를 구현하면 다중 상속이 가능합니다.
+
+### ✅ 상속과 메모리 구조
+- 상속을 통해 부모 클래스의 멤버 변수와 메소드를 자식 클래스가 상속받게 되면, 자식 클래스의 객체가 생성될 때 부모 클래스의 멤버 변수와 메소드도 함께 메모리에 할당됩니다.
+- 자식 클래스의 객체는 부모 클래스의 멤버 변수와 메소드를 사용할 수 있으며, 부모 클래스의 멤버 변수와 메소드를 오버라이드하여 자식 클래스에서 새로운 기능을 추가할 수 있습니다.
+- 상속을 통해 부모 클래스의 멤버 변수와 메소드를 자식 클래스에서 재사용할 수 있으므로, 코드의 중복을 줄이고 유지보수성을 높일 수 있습니다.
+
+### ✅ 상속 예시
+
+```java
+// 부모 클래스
+public class Car{
+    String color; // 색상
+    int speed; // 속도
+
+    // 생성자
+    public Car(String color, int speed) {
+        this.color = color;
+        this.speed = speed;
+    }
+
+    // 메소드
+    public void drive() {
+        System.out.println("차가 달립니다. 색상: " + color + ", 속도: " + speed);
+    }
+}
+// 자식 클래스
+public class SportsCar extends Car { // Car 클래스를 상속받음
+    int horsepower; // 마력
+
+    // 생성자
+    public SportsCar(String color, int speed, int horsepower) {
+        super(color, speed); // 부모 클래스의 생성자 호출
+        this.horsepower = horsepower;
+    }
+
+    // 메소드 오버라이드
+    @Override
+    public void drive() {
+        System.out.println("스포츠카가 달립니다. 색상: " + color + ", 속도: " + speed + ", 마력: " + horsepower);
+    }
+}
+```
+
+### ✅ 상속 사용 구조
+- 자식 객체가 생성되면 부모 객체도 같이 생성이 되는데 호출하는 변수가 자식인지 부모인지에 따라 메소드가 결정됩니다.
+- 상속 관계의 객체를 호출 할 때 대상 타입을 정해야 하고 현태 타입에서 기능을 찾지 못하면 부모 타입으로 찾아갑니다.
+
+### ✅ 상속과 메서드 오버라이딩
+- 자식 클래스에서 부모 클래스의 메소드를 재정의(오버라이드)할 수 있습니다.
+- 오버라이드된 메소드는 자식 클래스의 객체에서 호출될 때 자식 클래스의 메소드가 실행됩니다.
+- 부모 클래스의 메소드를 오버라이드할 때는 `@Override` 어노테이션을 사용하여 명시적으로 표시하는 것이 좋습니다.
+- 오버라이드된 메소드는 부모 클래스의 메소드와 동일한 시그니처(메소드 이름, 매개변수 타입, 개수)를 가져야 합니다.
+- 오버라이드된 메소드는 부모 클래스의 접근 제어자보다 더 제한적이지 않아야 합니다. 즉, 부모 클래스의 메소드가 `public`이면 자식 클래스의 오버라이드된 메소드는 `public` 또는 `protected`로 선언할 수 있습니다.
+
+---
+
+### ✅ 상속이 안되는 경우
+- 클래스가 `final`로 선언된 경우: `final` 클래스는 상속할 수 없습니다.
+- 클래스가 `private`로 선언된 경우: `private` 클래스는 외부에서 접근할 수 없으므로 상속할 수 없습니다.
+- static 메소드: static 메소드는 클래스 레벨에서 공유되므로 상속되지 않습니다.
+- 생성자는 오버라이딩이 불가능합니다.
+
+### ✅ super 키워드
+- 자식 클래스에서 부모 클래스의 생성자를 호출할 때 `super()`를 사용합니다.
+- 부모 클래스의 멤버 변수와 자식 클래스의 멤버 변수가 같은 이름을 가질 때, `super` 키워드를 사용하여 부모 클래스의 멤버 변수에 접근할 수 있습니다.
+
+---
+
+### ✅ super 키워드 예시
+
+```java
+public class Panent{
+    String name; // 부모 클래스의 멤버 변수
+
+    // 생성자
+    public Parent(String name) {
+        this.name = name; // 부모 클래스의 멤버 변수 초기화
+    }
+
+    public void display() {
+        System.out.println("부모 클래스 이름: " + name);
+    }
+}
+public class Child extends Parent {
+    String name; // 자식 클래스의 멤버 변수
+
+    // 생성자
+    public Child(String parentName, String childName) {
+        super(parentName); // 부모 클래스의 생성자 호출
+        this.name = childName; // 자식 클래스의 멤버 변수 초기화
+    }
+
+    @Override
+    public void display() {
+        super.display(); // 부모 클래스의 display 메소드 호출
+        System.out.println("자식 클래스 이름: " + name);
+    }
+}
+```
+---
 
 
 
