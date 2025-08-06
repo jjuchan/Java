@@ -657,6 +657,98 @@ public class DecoData {
 
 ---
 
+## final 키워드(final 패키지 참고)
+- final 키워드는 변수, 메소드, 클래스에 적용할 수 있으며, 각각의 의미가 다릅니다.
+- 변수는 최초의 한번 만 값을 할당할 수 있으며, 이후에는 변경할 수 없습니다.
+- 멤버 변수로 final이 생성 되어 있고 초기값이 없다면 생성자로 값을 할당해야 합니다.
+- 메소드는 final로 선언하면 오버라이드(재정의)를 할 수 없습니다.
+- 클래스는 final로 선언하면 상속을 할 수 없습니다.
+
+### ✅ final 변수 예시
+
+```java
+public class FinalExample {
+    final int MAX_VALUE = 100; // final 변수 선언
+    final String NAME; // final 변수 선언, 초기화는 생성자에서
+    public FinalExample(String name) {
+        this.NAME = name; // 생성자에서 초기화
+    }
+    public void display() {
+        System.out.println("MAX_VALUE: " + MAX_VALUE);
+        System.out.println("NAME: " + NAME);
+    }
+}
+```
+
+### ✅ final 메소드 예시
+
+```java
+public class FinalMethodExample {
+    public final void display() { // final 메소드 선언
+        System.out.println("This is a final method.");
+    } 
+    // 이 메소드는 오버라이드할 수 없습니다.
+}public class SubClass extends FinalMethodExample {
+    // 아래 메소드는 컴파일 오류가 발생합니다.
+    // public void display() {
+    //     System.out.println("Trying to override final method.");
+    // }
+}
+```
+
+### ✅ final 클래스 예시
+
+```java
+public final class FinalClass { // final 클래스 선언
+    public void display() {
+        System.out.println("This is a final class.");
+    }
+} 
+// 이 클래스는 상속할 수 없습니다.
+public class SubClass extends FinalClass { // 컴파일 오류 발생
+    // 상속할 수 없습니다.
+}
+```
+### ✅ final 키워드 요약
+| 적용 대상 | 설명                                | 예시                               |
+|--------|-----------------------------------|----------------------------------|
+| final 변수 | 값을 한 번만 할당할 수 있으며, 이후 변경 불가| `final int MAX_VALUE = 100;`          |
+| final 메소드 | 오버라이드(재정의)를 할 수 없음                   |`public final void display() { ... }` |
+| final 클래스 | 상속을 할 수 없음                           | `public final class FinalClass { ... }` |
+---
+
+### ✅ 상수
+- 상수는 변하지 않는 값을 의미하며, 일반적으로 final 키워드를 사용하여 선언합니다.
+- 상수는 대문자로 작성하며, 단어 사이에 언더스코어(_)를 사용하여 구분합니다.
+- 상수는 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없습니다.
+- 상수는 주로 프로그램의 설정 값이나 고정된 값을 표현할 때 사용됩니다.
+- 상수는 클래스 레벨에서 선언되며, static 키워드를 함께 사용하여 클래스 이름으로 접근할 수 있습니다.
+- 상수는 클래스의 멤버 변수로 선언되며, 초기화 후에는 값을 변경할 수 없습니다.
+
+### ✅ 상수 예시
+
+```java
+public class Constants {
+    public static final int MAX_USERS = 100; // 상수 선언
+    public static final String APP_NAME = "My Application"; // 상수 선언
+    public static final double PI = 3.14159; // 상수 선언
+    public static void main(String[] args) {
+        System.out.println("Max Users: " + MAX_USERS);
+        System.out.println("App Name: " + APP_NAME);
+        System.out.println("PI: " + PI);
+    }
+}
+```
+### ✅ 상수 요약
+| 적용 대상 | 설명                                | 예시                               |
+|--------|-----------------------------------|----------------------------------|
+| 상수 | 변하지 않는 값을 의미하며, final 키워드를 사용하여 선언 | `public static final int MAX_USERS = 100;` |
+| 상수 이름 | 대문자로 작성하며, 단어 사이에 언더스코어(_)를 사용하여 구분 | `public static final String APP_NAME = "My Application";` |
+| 상수 접근 | 클래스 이름으로 접근 가능하며, static 키워드를 함께 사용 | `public static final double PI = 3.14159;` |
+| 상수 사용 | 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없음 | `System.out.println("Max Users: " + MAX_USERS);` |
+---
+
+
 
 
 
