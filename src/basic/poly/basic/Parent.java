@@ -1,0 +1,8 @@
+package basic.poly.basic;
+
+public class Parent {
+
+    public void parentMethod() {
+        System.out.println("부모 클래스의 메소드입니다.");
+    }
+}
