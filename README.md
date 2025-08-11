@@ -658,6 +658,7 @@ public class DecoData {
 ---
 
 ## final 키워드(final 패키지 참고)
+
 - final 키워드는 변수, 메소드, 클래스에 적용할 수 있으며, 각각의 의미가 다릅니다.
 - 변수는 최초의 한번 만 값을 할당할 수 있으며, 이후에는 변경할 수 없습니다.
 - 멤버 변수로 final이 생성 되어 있고 초기값이 없다면 생성자로 값을 할당해야 합니다.
@@ -671,9 +672,11 @@ public class DecoData {
 public class FinalExample {
     final int MAX_VALUE = 100; // final 변수 선언
     final String NAME; // final 변수 선언, 초기화는 생성자에서
+
     public FinalExample(String name) {
         this.NAME = name; // 생성자에서 초기화
     }
+
     public void display() {
         System.out.println("MAX_VALUE: " + MAX_VALUE);
         System.out.println("NAME: " + NAME);
@@ -687,9 +690,11 @@ public class FinalExample {
 public class FinalMethodExample {
     public final void display() { // final 메소드 선언
         System.out.println("This is a final method.");
-    } 
+    }
     // 이 메소드는 오버라이드할 수 없습니다.
-}public class SubClass extends FinalMethodExample {
+}
+
+public class SubClass extends FinalMethodExample {
     // 아래 메소드는 컴파일 오류가 발생합니다.
     // public void display() {
     //     System.out.println("Trying to override final method.");
@@ -704,21 +709,26 @@ public final class FinalClass { // final 클래스 선언
     public void display() {
         System.out.println("This is a final class.");
     }
-} 
+}
+
 // 이 클래스는 상속할 수 없습니다.
 public class SubClass extends FinalClass { // 컴파일 오류 발생
     // 상속할 수 없습니다.
 }
 ```
+
 ### ✅ final 키워드 요약
-| 적용 대상 | 설명                                | 예시                               |
-|--------|-----------------------------------|----------------------------------|
-| final 변수 | 값을 한 번만 할당할 수 있으며, 이후 변경 불가| `final int MAX_VALUE = 100;`          |
-| final 메소드 | 오버라이드(재정의)를 할 수 없음                   |`public final void display() { ... }` |
-| final 클래스 | 상속을 할 수 없음                           | `public final class FinalClass { ... }` |
+
+| 적용 대상     | 설명                          | 예시                                      |
+|-----------|-----------------------------|-----------------------------------------|
+| final 변수  | 값을 한 번만 할당할 수 있으며, 이후 변경 불가 | `final int MAX_VALUE = 100;`            |
+| final 메소드 | 오버라이드(재정의)를 할 수 없음          | `public final void display() { ... }`   |
+| final 클래스 | 상속을 할 수 없음                  | `public final class FinalClass { ... }` |
+
 ---
 
 ### ✅ 상수
+
 - 상수는 변하지 않는 값을 의미하며, 일반적으로 final 키워드를 사용하여 선언합니다.
 - 상수는 대문자로 작성하며, 단어 사이에 언더스코어(_)를 사용하여 구분합니다.
 - 상수는 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없습니다.
@@ -733,6 +743,7 @@ public class Constants {
     public static final int MAX_USERS = 100; // 상수 선언
     public static final String APP_NAME = "My Application"; // 상수 선언
     public static final double PI = 3.14159; // 상수 선언
+
     public static void main(String[] args) {
         System.out.println("Max Users: " + MAX_USERS);
         System.out.println("App Name: " + APP_NAME);
@@ -740,16 +751,20 @@ public class Constants {
     }
 }
 ```
+
 ### ✅ 상수 요약
-| 적용 대상 | 설명                                | 예시                               |
-|--------|-----------------------------------|----------------------------------|
-| 상수 | 변하지 않는 값을 의미하며, final 키워드를 사용하여 선언 | `public static final int MAX_USERS = 100;` |
+
+| 적용 대상 | 설명                                  | 예시                                                        |
+|-------|-------------------------------------|-----------------------------------------------------------|
+| 상수    | 변하지 않는 값을 의미하며, final 키워드를 사용하여 선언  | `public static final int MAX_USERS = 100;`                |
 | 상수 이름 | 대문자로 작성하며, 단어 사이에 언더스코어(_)를 사용하여 구분 | `public static final String APP_NAME = "My Application";` |
-| 상수 접근 | 클래스 이름으로 접근 가능하며, static 키워드를 함께 사용 | `public static final double PI = 3.14159;` |
-| 상수 사용 | 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없음 | `System.out.println("Max Users: " + MAX_USERS);` |
+| 상수 접근 | 클래스 이름으로 접근 가능하며, static 키워드를 함께 사용 | `public static final double PI = 3.14159;`                |
+| 상수 사용 | 프로그램 전체에서 동일한 값을 유지하며, 변경할 수 없음     | `System.out.println("Max Users: " + MAX_USERS);`          |
+
 ---
 
 ## 💡 상속(Inheritance) -> extends1 패키지 참고
+
 - 상속은 객체 지향 프로그래밍의 핵심 개념 중 하나로, 기존 클래스의 속성과 메소드를 새로운 클래스에서 재사용할 수 있게 해줍니다.
 - 상속을 통해 코드의 재사용성을 높이고, 클래스 간의 관계를 명확히 할 수 있습니다.
 - 부모 클래스는 자식클래스에 접근 할 수 없지만 자식 클래스는 부모 클래스에 접근할 수 있습니다.
@@ -757,6 +772,7 @@ public class Constants {
 - 상속은 하나만 받을 수 있습니다. (단일 상속) 하지만 인터페이스를 구현하면 다중 상속이 가능합니다.
 
 ### ✅ 상속과 메모리 구조
+
 - 상속을 통해 부모 클래스의 멤버 변수와 메소드를 자식 클래스가 상속받게 되면, 자식 클래스의 객체가 생성될 때 부모 클래스의 멤버 변수와 메소드도 함께 메모리에 할당됩니다.
 - 자식 클래스의 객체는 부모 클래스의 멤버 변수와 메소드를 사용할 수 있으며, 부모 클래스의 멤버 변수와 메소드를 오버라이드하여 자식 클래스에서 새로운 기능을 추가할 수 있습니다.
 - 상속을 통해 부모 클래스의 멤버 변수와 메소드를 자식 클래스에서 재사용할 수 있으므로, 코드의 중복을 줄이고 유지보수성을 높일 수 있습니다.
@@ -765,7 +781,7 @@ public class Constants {
 
 ```java
 // 부모 클래스
-public class Car{
+public class Car {
     String color; // 색상
     int speed; // 속도
 
@@ -780,6 +796,7 @@ public class Car{
         System.out.println("차가 달립니다. 색상: " + color + ", 속도: " + speed);
     }
 }
+
 // 자식 클래스
 public class SportsCar extends Car { // Car 클래스를 상속받음
     int horsepower; // 마력
@@ -799,25 +816,32 @@ public class SportsCar extends Car { // Car 클래스를 상속받음
 ```
 
 ### ✅ 상속 사용 구조
+
 - 자식 객체가 생성되면 부모 객체도 같이 생성이 되는데 호출하는 변수가 자식인지 부모인지에 따라 메소드가 결정됩니다.
 - 상속 관계의 객체를 호출 할 때 대상 타입을 정해야 하고 현태 타입에서 기능을 찾지 못하면 부모 타입으로 찾아갑니다.
 
 ### ✅ 상속과 메서드 오버라이딩
+
 - 자식 클래스에서 부모 클래스의 메소드를 재정의(오버라이드)할 수 있습니다.
 - 오버라이드된 메소드는 자식 클래스의 객체에서 호출될 때 자식 클래스의 메소드가 실행됩니다.
 - 부모 클래스의 메소드를 오버라이드할 때는 `@Override` 어노테이션을 사용하여 명시적으로 표시하는 것이 좋습니다.
 - 오버라이드된 메소드는 부모 클래스의 메소드와 동일한 시그니처(메소드 이름, 매개변수 타입, 개수)를 가져야 합니다.
-- 오버라이드된 메소드는 부모 클래스의 접근 제어자보다 더 제한적이지 않아야 합니다. 즉, 부모 클래스의 메소드가 `public`이면 자식 클래스의 오버라이드된 메소드는 `public` 또는 `protected`로 선언할 수 있습니다.
+- 오버라이드된 메소드는 부모 클래스의 접근 제어자보다 더 제한적이지 않아야 합니다. 즉, 부모 클래스의 메소드가 `public`이면 자식 클래스의 오버라이드된 메소드는 `public` 또는 `protected`로
+  선언할 수 있습니다.
+- 멤버 변수는 오버라이드할 수 없으며, 메서드만 오버라이드할 수 있습니다.
+- 오버라이드 된 메서드는 절대적으로 먼저 호출 됩니다.
 
 ---
 
 ### ✅ 상속이 안되는 경우
+
 - 클래스가 `final`로 선언된 경우: `final` 클래스는 상속할 수 없습니다.
 - 클래스가 `private`로 선언된 경우: `private` 클래스는 외부에서 접근할 수 없으므로 상속할 수 없습니다.
 - static 메소드: static 메소드는 클래스 레벨에서 공유되므로 상속되지 않습니다.
 - 생성자는 오버라이딩이 불가능합니다.
 
 ### ✅ super 키워드
+
 - 자식 클래스에서 부모 클래스의 생성자를 호출할 때 `super()`를 사용합니다.
 - 부모 클래스의 멤버 변수와 자식 클래스의 멤버 변수가 같은 이름을 가질 때, `super` 키워드를 사용하여 부모 클래스의 멤버 변수에 접근할 수 있습니다.
 
@@ -826,7 +850,7 @@ public class SportsCar extends Car { // Car 클래스를 상속받음
 ### ✅ super 키워드 예시
 
 ```java
-public class Panent{
+public class Panent {
     String name; // 부모 클래스의 멤버 변수
 
     // 생성자
@@ -838,6 +862,7 @@ public class Panent{
         System.out.println("부모 클래스 이름: " + name);
     }
 }
+
 public class Child extends Parent {
     String name; // 자식 클래스의 멤버 변수
 
@@ -854,29 +879,56 @@ public class Child extends Parent {
     }
 }
 ```
+
 ---
 
-## 💡다형성 
+## 💡다형성(poly 패키지 참고)
+
 - 다형성(Polymorphism)은 객체 지향 프로그래밍의 핵심 개념 중 하나로, 동일한 인터페이스를 사용하여 다양한 객체를 처리할 수 있는 능력을 의미합니다.
 - 다형성은 주로 메소드 오버라이딩과 인터페이스를 통해 구현됩니다.
 - 다형성은 한 객체가 여러 타입의 객체로 동작할 수 있게 해줍니다.
+
 ---
+
 ### ✅ 다형성 특징
-- 부모는 자식을 참조할 수 있지만, 자식은 부모를 참조할 수 없습니다. 
+
+- 부모는 자식을 참조할 수 있지만, 자식은 부모를 참조할 수 없습니다.
 - 하지만 부모 클래스는 자식의 메서드는 호출할 수 없습니다.
+
 ```java
 Parent parent = new Child(); // 부모 클래스 타입으로 자식 클래스 객체를 참조
 
 Child child = new Parent(); // 컴파일 오류 발생 (부모 클래스 타입으로 자식 클래스 객체를 참조할 수 없음)
 ```
+
 ---
+
 ### ✅ 캐스팅
+
 - 부모 타입을 자식 타입으로 변환하는 것을 **다운캐스팅(Downcasting)**이라고 합니다.
 - 다형성을 활용할 때, 부모 클래스 타입으로 자식 클래스 객체를 참조할 수 있습니다. 이를 **업캐스팅(Upcasting)**이라고 합니다.
 - 업캐스팅은 자동으로 이루어지지만, 다운캐스팅은 명시적으로 해야 합니다.
+
 ```java
  Child child = (Child) parent; // 명시적 다운 캐스팅
+
+((Child)parent).childMethod(); // 일시적 다운 캐스팅
+
 ```
+### ✅ instanceof 연산자
+- `instanceof` 연산자는 객체가 특정 클래스의 인스턴스인지 확인하는 데 사용됩니다.
+- 이를 통해 다운캐스팅을 안전하게 수행할 수 있습니다.
+- `instanceof` 연산자는 객체가 특정 클래스의 인스턴스인지 확인하고, 결과는 `true` 또는 `false`로 반환됩니다.
+
+```java
+if (parent instanceof Child) {
+    Child child = (Child) parent; // 안전한 다운 캐스팅
+    child.childMethod(); // 자식 클래스의 메소드 호출
+} else {
+    System.out.println("parent는 Child의 인스턴스가 아닙니다.");
+}
+```
+
 
 
 
