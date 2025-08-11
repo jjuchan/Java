@@ -917,7 +917,9 @@ Child child = new Parent(); // 컴파일 오류 발생 (부모 클래스 타입�
 childMethod(); // 일시적 다운 캐스팅
 
 ```
+
 ---
+
 ### ✅ instanceof 연산자
 
 - `instanceof` 연산자는 객체가 특정 클래스의 인스턴스인지 확인하는 데 사용됩니다.
@@ -936,7 +938,9 @@ childMethod(); // 자식 클래스의 메소드 호출
 println("parent는 Child의 인스턴스가 아닙니다.");
 }
 ```
+
 ---
+
 ### ✅ 추상클래스
 
 - 추상 클래스는 인스턴스를 생성할 수 없는 클래스입니다.
@@ -946,7 +950,9 @@ println("parent는 Child의 인스턴스가 아닙니다.");
 - 추상 클래스는 `abstract` 키워드를 사용하여 선언합니다.
 - 추상 클래스는 다형성을 지원하며, 자식 클래스에서 오버라이드된 메소드를 통해 다양한 동작을 구현할 수 있습니다.
 - 인스턴스로 만들 수 없지만 자식 클래스에서 상속받아 사용할 수 있습니다.
+
 ---
+
 ### ✅ 추상 클래스 예시
 
 ```java
@@ -968,7 +974,9 @@ public class Dog extends Animal {
     }
 }
 ```
+
 ---
+
 ### ✅ 인터페이스
 
 - 인터페이스는 클래스가 구현해야 하는 메소드의 집합을 정의하는 것입니다.
@@ -979,9 +987,10 @@ public class Dog extends Animal {
 - 인터페이스는 클래스가 구현해야 하는 메소드의 시그니처만 정의하며, 실제 구현은 클래스에서 수행합니다.
 - 인터페이스는 다형성을 지원하며, 인터페이스 타입으로 객체를 참조할 수 있습니다.
 - 인터페이스는 클래스와 달리 인스턴스를 생성할 수 없습니다.
-- 다중 구현이 가능하기 때문에 추상 클래스와 
+- 다중 구현이 가능하기 때문에 추상 클래스와
 
 ---
+
 ### ✅ 인터페이스 예시
 
 ```java
@@ -1006,6 +1015,34 @@ public class Dog implements Animal {
 
 ---
 
+### ✅ 인터페이스와 다중 상속
+
+- 자바는 클래스의 다중 상속을 지원하지 않지만, 인터페이스의 다중 상속은 가능합니다.
+- 인터페이스는 여러 개를 구현할 수 있으며, 이를 통해 다중 상속의 효과를 얻을 수 있습니다.
+- 인터페이스를 구현하는 클래스는 여러 인터페이스의 메소드를 오버라이드하여 다양한 기능을 제공할 수 있습니다.
+
+```java
+public interface Animal {
+    void makeSound();
+}
+
+public interface Pet {
+    void play();
+}
+
+public class Dog implements Animal, Pet {
+    @Override
+    public void makeSound() {
+        System.out.println("Woof Woof");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Dog is playing.");
+    }
+}
+```
+---
 
 
 
