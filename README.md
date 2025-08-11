@@ -912,23 +912,96 @@ Child child = new Parent(); // 컴파일 오류 발생 (부모 클래스 타입�
 ```java
  Child child = (Child) parent; // 명시적 다운 캐스팅
 
-((Child)parent).childMethod(); // 일시적 다운 캐스팅
+((Child)parent).
+
+childMethod(); // 일시적 다운 캐스팅
 
 ```
+---
 ### ✅ instanceof 연산자
+
 - `instanceof` 연산자는 객체가 특정 클래스의 인스턴스인지 확인하는 데 사용됩니다.
 - 이를 통해 다운캐스팅을 안전하게 수행할 수 있습니다.
 - `instanceof` 연산자는 객체가 특정 클래스의 인스턴스인지 확인하고, 결과는 `true` 또는 `false`로 반환됩니다.
 
 ```java
-if (parent instanceof Child) {
-    Child child = (Child) parent; // 안전한 다운 캐스팅
-    child.childMethod(); // 자식 클래스의 메소드 호출
-} else {
-    System.out.println("parent는 Child의 인스턴스가 아닙니다.");
+if(parent instanceof Child){
+Child child = (Child) parent; // 안전한 다운 캐스팅
+    child.
+
+childMethod(); // 자식 클래스의 메소드 호출
+}else{
+        System.out.
+
+println("parent는 Child의 인스턴스가 아닙니다.");
 }
 ```
+---
+### ✅ 추상클래스
 
+- 추상 클래스는 인스턴스를 생성할 수 없는 클래스입니다.
+- 추상 클래스는 하나 이상의 추상 메소드를 가질 수 있으며, 이 메소드들은 자식 클래스에서 반드시 구현해야 합니다.
+- 추상 클래스는 일반 메소드와 추상 메소드를 모두 가질 수 있습니다.
+- 추상 클래스는 상속을 통해 자식 클래스에서 구현되어야 합니다.
+- 추상 클래스는 `abstract` 키워드를 사용하여 선언합니다.
+- 추상 클래스는 다형성을 지원하며, 자식 클래스에서 오버라이드된 메소드를 통해 다양한 동작을 구현할 수 있습니다.
+- 인스턴스로 만들 수 없지만 자식 클래스에서 상속받아 사용할 수 있습니다.
+---
+### ✅ 추상 클래스 예시
+
+```java
+public abstract class Animal {
+    // 추상 메소드
+    public abstract void makeSound();
+
+    // 일반 메소드
+    public void eat() {
+        System.out.println("Animal is eating.");
+    }
+}
+
+public class Dog extends Animal {
+    // 추상 메소드 구현
+    @Override
+    public void makeSound() {
+        System.out.println("Woof Woof");
+    }
+}
+```
+---
+### ✅ 인터페이스
+
+- 인터페이스는 클래스가 구현해야 하는 메소드의 집합을 정의하는 것입니다.
+- 인터페이스는 다중 상속을 지원하며, 여러 인터페이스를 구현할 수 있습니다.
+- 인터페이스는 `interface` 키워드를 사용하여 선언합니다.
+- 인터페이스는 모든 메소드가 추상 메소드이며, 기본적으로 `public`입니다.
+- 인터페이스는 상수 필드를 가질 수 있으며, 이 필드는 `public static final`로 선언됩니다.
+- 인터페이스는 클래스가 구현해야 하는 메소드의 시그니처만 정의하며, 실제 구현은 클래스에서 수행합니다.
+- 인터페이스는 다형성을 지원하며, 인터페이스 타입으로 객체를 참조할 수 있습니다.
+- 인터페이스는 클래스와 달리 인스턴스를 생성할 수 없습니다.
+
+---
+### ✅ 인터페이스 예시
+
+```java
+public interface Animal {
+    void makeSound(); // 추상 메소드
+
+    void eat(); // 추상 메소드
+}
+
+public class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Woof Woof");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Dog is eating.");
+    }
+}
+```
 
 
 
