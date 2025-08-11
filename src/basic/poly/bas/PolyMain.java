@@ -1,4 +1,4 @@
-package basic.poly.basic;
+package basic.poly.bas;
 
 public class PolyMain {
     public static void main(String[] args) {
