@@ -1042,7 +1042,12 @@ public class Dog implements Animal, Pet {
     }
 }
 ```
+
 ---
+
+### ✅ Ocp 원칙
+
+> 객체 지향 설계 원칙 중 하나로 OCP 원칙 인데 기존의 코드의 수정 없이 새로운 기능을 추가할 수 있게 해야 한다는 의미
 
 
 
